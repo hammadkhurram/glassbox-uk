@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -25,35 +26,61 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#141413",
-          foreground: "#FAFAF8",
+          DEFAULT: "#000000",
+          foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#8989DE",
-          foreground: "#141413",
+          DEFAULT: "#0077ED",
+          foreground: "#FFFFFF",
         },
-        neutral: {
-          100: "#FAFAF8",
-          200: "#F0EFEA",
-          300: "#E6E4DD",
-          400: "#C4C3BB",
-          500: "#A3A299",
-          600: "#828179",
-          700: "#605F5B",
-          800: "#3A3935",
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          purple: "#8989DE",
-          blue: "#61AAF2",
-          green: "#7EBF8E",
+          DEFAULT: "#0071E3",
+          foreground: "#FFFFFF",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        neutral: {
+          100: "#F5F5F7",
+          200: "#E8E8ED",
+          300: "#D2D2D7",
+          400: "#86868B", 
+          500: "#6E6E73",
+          600: "#424245",
+          700: "#323235",
+          800: "#1D1D1F",
+          900: "#000000",
         },
       },
       fontFamily: {
-        sans: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "sans-serif"],
+        sans: [
+          "SF Pro Display",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "sans-serif",
+        ],
       },
       animation: {
         "fade-up": "fadeUp 0.5s ease-out forwards",
         "fade-in": "fadeIn 0.5s ease-out forwards",
+        "slide-left": "slideLeft 25s linear infinite",
+        "slide-right": "slideRight 25s linear infinite",
+        "carousel": "carousel 15s linear infinite",
       },
       keyframes: {
         fadeUp: {
@@ -63,6 +90,18 @@ export default {
         fadeIn: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
+        },
+        slideLeft: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        slideRight: {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        carousel: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
         },
       },
       backdropBlur: {

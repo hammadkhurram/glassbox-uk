@@ -28,7 +28,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 }) => {
   return (
     <motion.div 
-      className="profile-card"
+      className="profile-card h-full"
       whileHover={{ y: -5 }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -36,11 +36,11 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
     >
       <div className="flex p-4 md:p-6">
         <div className="w-1/3">
-          <div className="avatar-circle w-24 h-24 md:w-32 md:h-32">
+          <div className="avatar-circle w-24 h-24 md:w-32 md:h-32 bg-neutral-100">
             <img
               src={image}
               alt={`${name}'s profile`}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-full"
             />
           </div>
         </div>
@@ -54,7 +54,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
                 key={index} 
                 src={uni.logo} 
                 alt={uni.name} 
-                className="university-logo"
+                className="h-6 w-auto"
                 title={uni.name}
               />
             ))}
@@ -66,25 +66,25 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           <div className="mt-4 space-y-1">
             {hasCommonApp && (
               <p className="text-sm flex items-center">
-                <span className="feature-dot"></span>
+                <span className="w-2 h-2 rounded-full bg-green-500 mr-2"></span>
                 Complete Application
               </p>
             )}
             {hasPersonalEssays && (
               <p className="text-sm flex items-center">
-                <span className="feature-dot"></span>
+                <span className="w-2 h-2 rounded-full bg-green-500 mr-2"></span>
                 Personal Essays
               </p>
             )}
             {hasActivityDescriptions && (
               <p className="text-sm flex items-center">
-                <span className="feature-dot"></span>
+                <span className="w-2 h-2 rounded-full bg-green-500 mr-2"></span>
                 Activity Descriptions
               </p>
             )}
             {hasSupplementalEssays && (
               <p className="text-sm flex items-center">
-                <span className="feature-dot"></span>
+                <span className="w-2 h-2 rounded-full bg-green-500 mr-2"></span>
                 Supplemental Essays
               </p>
             )}
@@ -94,7 +94,10 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
       
       <div className="mt-auto border-t border-neutral-200 p-4 flex justify-between items-center">
         <span className="font-bold text-lg">${price}</span>
-        <Link to={`/profile/${id}`} className="px-4 py-2 bg-black text-white rounded-full hover:bg-neutral-800 transition-colors">
+        <Link 
+          to={`/profile/${id}`} 
+          className="px-4 py-2 bg-black text-white rounded-full hover:bg-neutral-800 transition-colors"
+        >
           Get Access
         </Link>
       </div>

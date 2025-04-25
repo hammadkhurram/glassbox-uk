@@ -4,7 +4,7 @@ import ProfileCard from './ProfileCard';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Sample profile data
+// Updated sample profile data with more profiles and consistent images
 const sampleProfiles = [
   {
     id: '1',
@@ -24,7 +24,7 @@ const sampleProfiles = [
   {
     id: '2',
     name: 'Sophia Chen',
-    image: 'https://images.unsplash.com/photo-1721322800607-8c38375eef04',
+    image: 'https://images.unsplash.com/photo-1592188657836-c9753b21a0a9',
     universities: [
       {name: 'MIT', logo: '/universities/mit.png'},
       {name: 'Caltech', logo: '/universities/caltech.png'}
@@ -38,7 +38,7 @@ const sampleProfiles = [
   {
     id: '3',
     name: 'Marcus Johnson',
-    image: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7',
+    image: 'https://images.unsplash.com/photo-1541535650810-10d26f5c2ab3',
     universities: [
       {name: 'Princeton', logo: '/universities/princeton.png'},
       {name: 'Columbia', logo: '/universities/columbia.png'},
@@ -53,7 +53,7 @@ const sampleProfiles = [
   {
     id: '4',
     name: 'Emily Davis',
-    image: 'https://images.unsplash.com/photo-1582562124811-c09040d0a901',
+    image: 'https://images.unsplash.com/photo-1517256673644-36ad11246d21',
     universities: [
       {name: 'UPenn', logo: '/universities/upenn.png'},
       {name: 'Cornell', logo: '/universities/cornell.png'}
@@ -67,7 +67,7 @@ const sampleProfiles = [
   {
     id: '5',
     name: 'David Wilson',
-    image: 'https://images.unsplash.com/photo-1500673922987-e212871fec22',
+    image: 'https://images.unsplash.com/photo-1522529599102-193c0d76b5b6',
     universities: [
       {name: 'Duke', logo: '/universities/duke.png'},
       {name: 'Johns Hopkins', logo: '/universities/johnshopkins.png'},
@@ -75,6 +75,35 @@ const sampleProfiles = [
     ],
     hasCommonApp: true,
     hasPersonalEssays: false,
+    hasActivityDescriptions: true,
+    hasSupplementalEssays: true,
+    price: 30
+  },
+  {
+    id: '6',
+    name: 'Rachel Martinez',
+    image: 'https://images.unsplash.com/photo-1516534775068-ba3e7458af70',
+    universities: [
+      {name: 'Stanford', logo: '/universities/stanford.png'},
+      {name: 'MIT', logo: '/universities/mit.png'}
+    ],
+    hasCommonApp: true,
+    hasPersonalEssays: true,
+    hasActivityDescriptions: true,
+    hasSupplementalEssays: true,
+    price: 30
+  },
+  {
+    id: '7',
+    name: 'James Park',
+    image: 'https://images.unsplash.com/photo-1507537297725-24a1c029d3ca',
+    universities: [
+      {name: 'Harvard', logo: '/universities/harvard.png'},
+      {name: 'Yale', logo: '/universities/yale.png'},
+      {name: 'Princeton', logo: '/universities/princeton.png'}
+    ],
+    hasCommonApp: true,
+    hasPersonalEssays: true,
     hasActivityDescriptions: true,
     hasSupplementalEssays: true,
     price: 30
@@ -86,18 +115,6 @@ const ProfileCarousel: React.FC = () => {
   const [profiles] = useState(sampleProfiles);
   const [showCount, setShowCount] = useState(3); // Default for desktop
   const carouselRef = useRef<HTMLDivElement>(null);
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      (prevIndex + 1) % Math.ceil(profiles.length / showCount)
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => 
-      (prevIndex - 1 + Math.ceil(profiles.length / showCount)) % Math.ceil(profiles.length / showCount)
-    );
-  };
 
   useEffect(() => {
     // Adjust showCount based on screen size
@@ -116,21 +133,33 @@ const ProfileCarousel: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => 
+      (prevIndex + 1) % Math.ceil(profiles.length / showCount)
+    );
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => 
+      (prevIndex - 1 + Math.ceil(profiles.length / showCount)) % Math.ceil(profiles.length / showCount)
+    );
+  };
+
   return (
     <div className="relative overflow-hidden py-4">
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl md:text-3xl font-bold">Featured Student Profiles</h2>
         <div className="flex space-x-2">
           <button 
             onClick={prevSlide} 
-            className="p-2 bg-neutral-200 rounded-full hover:bg-neutral-300 transition-colors"
+            className="p-2 bg-neutral-800 text-white rounded-full hover:bg-black transition-colors"
             aria-label="Previous profiles"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button 
             onClick={nextSlide} 
-            className="p-2 bg-neutral-200 rounded-full hover:bg-neutral-300 transition-colors"
+            className="p-2 bg-neutral-800 text-white rounded-full hover:bg-black transition-colors"
             aria-label="Next profiles"
           >
             <ChevronRight className="w-5 h-5" />
@@ -144,10 +173,11 @@ const ProfileCarousel: React.FC = () => {
           animate={{ x: -currentIndex * (100 / showCount) + '%' }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
-          {profiles.map((profile, idx) => (
+          {profiles.map((profile) => (
             <div 
               key={profile.id} 
               className={`w-full sm:${showCount === 1 ? 'w-full' : showCount === 2 ? 'w-1/2' : 'w-1/3'} flex-shrink-0 px-2`}
+              style={{ height: '100%' }}
             >
               <ProfileCard {...profile} />
             </div>
@@ -155,13 +185,13 @@ const ProfileCarousel: React.FC = () => {
         </motion.div>
       </div>
 
-      <div className="carousel-dots mt-4">
+      <div className="carousel-dots mt-6 flex justify-center">
         {Array.from({ length: Math.ceil(profiles.length / showCount) }).map((_, idx) => (
           <button
             key={idx}
             className={`${
-              idx === currentIndex ? 'carousel-dot-active' : 'carousel-dot'
-            } w-2 h-2 rounded-full mx-1`}
+              idx === currentIndex ? 'w-8 bg-black' : 'w-2 bg-neutral-300'
+            } h-2 rounded-full mx-1 transition-all duration-300`}
             onClick={() => setCurrentIndex(idx)}
             aria-label={`Go to slide ${idx + 1}`}
           />

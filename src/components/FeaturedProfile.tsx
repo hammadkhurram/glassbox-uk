@@ -27,9 +27,9 @@ const FeaturedProfile: React.FC = () => {
   };
 
   return (
-    <div className="container-padding py-16">
+    <div className="container-padding py-8">
       <h2 className="text-center heading-lg mb-2">How Hamza Got Into Stanford</h2>
-      <p className="text-center text-neutral-500 mb-10 max-w-3xl mx-auto">
+      <p className="text-center text-neutral-500 mb-6 max-w-3xl mx-auto">
         Get access to this featured profile for free and learn the strategies that helped Hamza secure his spot at Stanford University.
       </p>
       

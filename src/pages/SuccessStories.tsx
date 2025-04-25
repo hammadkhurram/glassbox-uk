@@ -26,7 +26,7 @@ const successStories: SuccessStory[] = [
       logo: '/universities/stanford.png'
     },
     quote: 'Glassbox showed me what successful Stanford applicants actually wrote about. It was exactly what I needed to find my voice.',
-    story: 'I spent months struggling with my application essays, unsure if I was highlighting the right experiences or using the right tone. After purchasing a few profiles from Stanford admits on Glassbox, I immediately saw patterns in what worked. The personal statements were authentic and showed vulnerability, not just achievements. I rewrote my essays to focus on my genuine passion for neuroscience and how my research experience shaped my goals. Three months later, I got the acceptance email I'd been dreaming of!'
+    story: 'I spent months struggling with my application essays, unsure if I was highlighting the right experiences or using the right tone. After purchasing a few profiles from Stanford admits on Glassbox, I immediately saw patterns in what worked. The personal statements were authentic and showed vulnerability, not just achievements. I rewrote my essays to focus on my genuine passion for neuroscience and how my research experience shaped my goals. Three months later, I got the acceptance email I\'d been dreaming of!'
   },
   {
     id: '2',

@@ -107,13 +107,55 @@ const sampleProfiles = [
     hasActivityDescriptions: true,
     hasSupplementalEssays: true,
     price: 30
+  },
+  {
+    id: '8',
+    name: 'Olivia Thompson',
+    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956',
+    universities: [
+      {name: 'Dartmouth', logo: '/universities/dartmouth.png'},
+      {name: 'Brown', logo: '/universities/brown.png'}
+    ],
+    hasCommonApp: true,
+    hasPersonalEssays: true,
+    hasActivityDescriptions: false,
+    hasSupplementalEssays: true,
+    price: 25
+  },
+  {
+    id: '9',
+    name: 'Daniel Lee',
+    image: 'https://images.unsplash.com/photo-1531891437562-4301cf35b7e4',
+    universities: [
+      {name: 'Princeton', logo: '/universities/princeton.png'},
+      {name: 'Harvard', logo: '/universities/harvard.png'}
+    ],
+    hasCommonApp: true,
+    hasPersonalEssays: true,
+    hasActivityDescriptions: true,
+    hasSupplementalEssays: true,
+    price: 30
+  },
+  {
+    id: '10',
+    name: 'Maya Patel',
+    image: 'https://images.unsplash.com/photo-1557053910-d9eadeed1c58',
+    universities: [
+      {name: 'Yale', logo: '/universities/yale.png'},
+      {name: 'Columbia', logo: '/universities/columbia.png'}
+    ],
+    hasCommonApp: true,
+    hasPersonalEssays: true,
+    hasActivityDescriptions: true,
+    hasSupplementalEssays: false,
+    price: 25
   }
 ];
 
 const ProfileCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [profiles] = useState(sampleProfiles);
-  const [showCount, setShowCount] = useState(3); // Default for desktop
+  const [showCount, setShowCount] = useState(4); // Show more profiles by default
   const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -121,10 +163,14 @@ const ProfileCarousel: React.FC = () => {
     const handleResize = () => {
       if (window.innerWidth < 640) {
         setShowCount(1); // Mobile: Show 1
+      } else if (window.innerWidth < 768) {
+        setShowCount(2); // Smaller tablets: Show 2
       } else if (window.innerWidth < 1024) {
-        setShowCount(2); // Tablet: Show 2
+        setShowCount(3); // Tablets: Show 3
+      } else if (window.innerWidth < 1280) {
+        setShowCount(4); // Small desktops: Show 4
       } else {
-        setShowCount(3); // Desktop: Show 3
+        setShowCount(5); // Large desktops: Show 5
       }
     };
 
@@ -176,8 +222,11 @@ const ProfileCarousel: React.FC = () => {
           {profiles.map((profile) => (
             <div 
               key={profile.id} 
-              className={`w-full sm:${showCount === 1 ? 'w-full' : showCount === 2 ? 'w-1/2' : 'w-1/3'} flex-shrink-0 px-2`}
-              style={{ height: '100%' }}
+              className={`px-2`}
+              style={{ 
+                width: `${100 / showCount}%`,
+                height: '100%' 
+              }}
             >
               <ProfileCard {...profile} />
             </div>
@@ -190,7 +239,7 @@ const ProfileCarousel: React.FC = () => {
           <button
             key={idx}
             className={`${
-              idx === currentIndex ? 'w-8 bg-black' : 'w-2 bg-neutral-300'
+              idx === currentIndex ? 'w-8 bg-neutral-800' : 'w-2 bg-neutral-300'
             } h-2 rounded-full mx-1 transition-all duration-300`}
             onClick={() => setCurrentIndex(idx)}
             aria-label={`Go to slide ${idx + 1}`}

@@ -16,44 +16,48 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Navigation />
       
-      {/* Hero Section */}
-      <header className="pt-32 pb-20">
-        <div className="container-padding text-center">
-          <motion.h1 
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            Get Into Your Dream College<br />With Insider Knowledge
-          </motion.h1>
-          <motion.p 
-            className="text-xl md:text-2xl text-neutral-600 mb-10 max-w-3xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            Access real, successful applications from students who got into top colleges. See exactly what works in the admissions process.
-          </motion.p>
-          <motion.div 
-            className="flex flex-col sm:flex-row justify-center gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <Link
-              to="/browse"
-              className="px-8 py-4 bg-accent text-white rounded-full text-lg font-medium hover:bg-accent/90 transition-colors"
+      {/* Hero Section with Featured Profile */}
+      <header className="pt-20 pb-10">
+        <div className="container-padding">
+          <div className="flex flex-col lg:flex-row gap-6">
+            <motion.div 
+              className="w-full lg:w-1/2 text-center lg:text-left"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
             >
-              Browse Profiles
-            </Link>
-            <Link
-              to="/upload"
-              className="px-8 py-4 bg-white text-black rounded-full text-lg font-medium border border-neutral-200 hover:bg-neutral-100 transition-colors"
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
+                Get Into Your Dream College<br />With Insider Knowledge
+              </h1>
+              <p className="text-lg md:text-xl text-neutral-600 mb-6 max-w-3xl mx-auto lg:mx-0">
+                Access real, successful applications from students who got into top colleges. See exactly what works in the admissions process.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                <Link
+                  to="/browse"
+                  className="px-6 py-3 bg-accent text-white rounded-full text-lg font-medium hover:bg-accent/90 transition-colors"
+                >
+                  Browse Profiles
+                </Link>
+                <Link
+                  to="/upload"
+                  className="px-6 py-3 bg-white text-black rounded-full text-lg font-medium border border-neutral-200 hover:bg-neutral-100 transition-colors"
+                >
+                  Upload Profile
+                </Link>
+              </div>
+            </motion.div>
+            
+            {/* Compact Featured Profile */}
+            <motion.div 
+              className="w-full lg:w-1/2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Upload Profile
-            </Link>
-          </motion.div>
+              <FeaturedProfile compact={true} />
+            </motion.div>
+          </div>
         </div>
       </header>
 
@@ -61,19 +65,16 @@ const Index = () => {
       <UniversityLogoScroll />
       
       {/* Verification Banner */}
-      <div className="py-10 bg-neutral-100">
+      <div className="py-6 bg-neutral-100">
         <div className="container-padding">
           <div className="flex items-center justify-center">
             <CheckCircle className="text-green-500 w-6 h-6 mr-3" />
             <p className="text-lg font-medium">
-              All profiles are verified for authenticity and accuracy
+              All acceptances are verified for authenticity and accuracy
             </p>
           </div>
         </div>
       </div>
-
-      {/* Featured Profile - Stanford */}
-      <FeaturedProfile />
       
       {/* Featured Profiles Carousel */}
       <section className="py-16 bg-white">

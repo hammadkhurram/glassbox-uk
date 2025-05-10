@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -19,45 +18,43 @@ const Index = () => {
       {/* Hero Section with Featured Profile */}
       <header className="pt-20 pb-10">
         <div className="container-padding">
-          <div className="flex flex-col lg:flex-row gap-6">
-            <motion.div 
-              className="w-full lg:w-1/2 text-center lg:text-left"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
-                Get Into Your Dream College<br />With Insider Knowledge
-              </h1>
-              <p className="text-lg md:text-xl text-neutral-600 mb-6 max-w-3xl mx-auto lg:mx-0">
-                Access real, successful applications from students who got into top colleges. See exactly what works in the admissions process.
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                <Link
-                  to="/browse"
-                  className="px-6 py-3 bg-accent text-white rounded-full text-lg font-medium hover:bg-accent/90 transition-colors"
-                >
-                  Browse Profiles
-                </Link>
-                <Link
-                  to="/upload"
-                  className="px-6 py-3 bg-white text-black rounded-full text-lg font-medium border border-neutral-200 hover:bg-neutral-100 transition-colors"
-                >
-                  Upload Profile
-                </Link>
-              </div>
-            </motion.div>
-            
-            {/* Compact Featured Profile */}
-            <motion.div 
-              className="w-full lg:w-1/2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <FeaturedProfile compact={true} />
-            </motion.div>
-          </div>
+          <motion.div 
+            className="text-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
+              Get Into Your Dream College<br />With Insider Knowledge
+            </h1>
+            <p className="text-lg md:text-xl text-neutral-600 mb-6 max-w-3xl mx-auto">
+              Access real, successful applications from students who got into top colleges. See exactly what works in the admissions process.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link
+                to="/browse"
+                className="px-6 py-3 bg-accent text-white rounded-full text-lg font-medium hover:bg-accent/90 transition-colors"
+              >
+                Browse Profiles
+              </Link>
+              <Link
+                to="/upload"
+                className="px-6 py-3 bg-white text-black rounded-full text-lg font-medium border border-neutral-200 hover:bg-neutral-100 transition-colors"
+              >
+                Upload Profile
+              </Link>
+            </div>
+          </motion.div>
+          
+          {/* Compact Featured Profile */}
+          <motion.div 
+            className="max-w-sm mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <FeaturedProfile compact={true} />
+          </motion.div>
         </div>
       </header>
 

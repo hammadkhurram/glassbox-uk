@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, ArrowRight } from 'lucide-react';
@@ -10,7 +9,6 @@ interface FeaturedProfileProps {
 
 const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ compact = false }) => {
   const [email, setEmail] = useState('');
-  const [country, setCountry] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -26,7 +24,6 @@ const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ compact = false }) =>
         description: "Hamza's Stanford profile has been sent to your email.",
       });
       setEmail('');
-      setCountry('');
     }, 1000);
   };
 
@@ -38,11 +35,11 @@ const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ compact = false }) =>
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="p-5">
-          <h3 className="font-bold text-lg mb-2">How Hamza Got Into Stanford</h3>
+        <div className="p-4">
+          <h3 className="font-bold text-base mb-2">How Hamza Got Into Stanford</h3>
           
-          <div className="flex items-center mb-3">
-            <div className="w-12 h-12 rounded-full overflow-hidden mr-3">
+          <div className="flex mb-3">
+            <div className="w-10 h-10 rounded-full overflow-hidden mr-2">
               <img 
                 src="https://images.unsplash.com/photo-1500673922987-e212871fec22" 
                 alt="Hamza" 
@@ -50,14 +47,14 @@ const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ compact = false }) =>
               />
             </div>
             <div>
-              <p className="font-semibold">Hamza A.</p>
+              <p className="font-semibold text-sm">Hamza A.</p>
               <div className="flex">
                 <img src="/universities/stanford.png" alt="Stanford University" className="h-4 w-auto" />
               </div>
             </div>
           </div>
           
-          <form onSubmit={handleSubmit} className="space-y-3">
+          <form onSubmit={handleSubmit} className="space-y-2">
             <div>
               <input 
                 type="email" 
@@ -70,18 +67,18 @@ const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ compact = false }) =>
             </div>
             <button 
               type="submit" 
-              className="w-full flex justify-center items-center py-2 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent/90 transition-colors"
+              className="w-full flex justify-center items-center py-1.5 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent/90 transition-colors"
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Sending...' : 'Get Free Access'}
-              {!isSubmitting && <ArrowRight className="ml-1 h-3 w-3" />}
+              <ArrowRight className="ml-1 h-3 w-3" />
             </button>
           </form>
           
-          <div className="flex gap-1 mt-3 justify-center">
-            <CheckCircle className="w-3 h-3 text-green-500 mt-1" />
+          <div className="flex gap-1 mt-2 justify-center">
+            <CheckCircle className="w-3 h-3 text-green-500 mt-0.5" />
             <p className="text-[10px] text-neutral-500">
-              We respect your privacy and will never share your information.
+              We respect your privacy.
             </p>
           </div>
         </div>

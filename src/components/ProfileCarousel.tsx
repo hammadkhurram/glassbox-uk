@@ -1,10 +1,9 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import ProfileCard from './ProfileCard';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Updated sample profile data with more profiles and consistent images
+// Sample profile data with consistent images
 const sampleProfiles = [
   {
     id: '1',
@@ -155,7 +154,7 @@ const sampleProfiles = [
 const ProfileCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [profiles] = useState(sampleProfiles);
-  const [showCount, setShowCount] = useState(4); // Show more profiles by default
+  const [showCount, setShowCount] = useState(4);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -167,10 +166,8 @@ const ProfileCarousel: React.FC = () => {
         setShowCount(2); // Smaller tablets: Show 2
       } else if (window.innerWidth < 1024) {
         setShowCount(3); // Tablets: Show 3
-      } else if (window.innerWidth < 1280) {
-        setShowCount(4); // Small desktops: Show 4
       } else {
-        setShowCount(5); // Large desktops: Show 5
+        setShowCount(4); // Desktops: Show 4 (reduced from 5 for consistency)
       }
     };
 
@@ -222,13 +219,14 @@ const ProfileCarousel: React.FC = () => {
           {profiles.map((profile) => (
             <div 
               key={profile.id} 
-              className={`px-2`}
+              className="px-2"
               style={{ 
                 width: `${100 / showCount}%`,
-                height: '100%' 
               }}
             >
-              <ProfileCard {...profile} />
+              <div className="h-full">
+                <ProfileCard {...profile} />
+              </div>
             </div>
           ))}
         </motion.div>

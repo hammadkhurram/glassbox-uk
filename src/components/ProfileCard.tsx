@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Check } from 'lucide-react';
 
 interface ProfileCardProps {
   id: string;
@@ -28,7 +29,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 }) => {
   return (
     <motion.div 
-      className="profile-card h-full"
+      className="profile-card h-full border border-neutral-200 rounded-xl shadow-sm bg-white"
       whileHover={{ y: -5 }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -36,11 +37,11 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
     >
       <div className="flex p-4 md:p-6">
         <div className="w-1/3">
-          <div className="avatar-circle w-24 h-24 md:w-32 md:h-32 bg-neutral-100">
+          <div className="avatar-circle w-24 h-24 md:w-32 md:h-32 bg-neutral-100 rounded-full overflow-hidden">
             <img
               src={image}
               alt={`${name}'s profile`}
-              className="w-full h-full object-cover rounded-full"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
@@ -66,25 +67,25 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           <div className="mt-4 space-y-1">
             {hasCommonApp && (
               <p className="text-sm flex items-center">
-                <span className="w-2 h-2 rounded-full bg-green-500 mr-2"></span>
+                <Check className="w-3 h-3 text-green-500 mr-2" />
                 Complete Application
               </p>
             )}
             {hasPersonalEssays && (
               <p className="text-sm flex items-center">
-                <span className="w-2 h-2 rounded-full bg-green-500 mr-2"></span>
+                <Check className="w-3 h-3 text-green-500 mr-2" />
                 Personal Essays
               </p>
             )}
             {hasActivityDescriptions && (
               <p className="text-sm flex items-center">
-                <span className="w-2 h-2 rounded-full bg-green-500 mr-2"></span>
+                <Check className="w-3 h-3 text-green-500 mr-2" />
                 Activity Descriptions
               </p>
             )}
             {hasSupplementalEssays && (
               <p className="text-sm flex items-center">
-                <span className="w-2 h-2 rounded-full bg-green-500 mr-2"></span>
+                <Check className="w-3 h-3 text-green-500 mr-2" />
                 Supplemental Essays
               </p>
             )}

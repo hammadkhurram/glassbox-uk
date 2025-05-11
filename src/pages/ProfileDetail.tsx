@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navigation from "@/components/Navigation";
@@ -39,7 +40,7 @@ const ProfileDetail = () => {
               <FeaturedProfile onAccess={handleAccess} />
             ) : (
               <div className="container-padding">
-                <h1 className="text-4xl font-bold mb-6">Hamza's Stanford Profile</h1>
+                <h1 className="text-4xl font-bold mb-6">Hamza's Cambridge Profile</h1>
                 {/* Profile content would go here */}
                 <div className="bg-white shadow-md rounded-lg p-6">
                   <p className="text-lg">Profile content is loading...</p>

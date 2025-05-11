@@ -25,7 +25,7 @@ const Index = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Get Into Your Dream College<br />With Insider Knowledge
+            Get Into Your Dream UK University<br />With Insider Knowledge
           </motion.h1>
           <motion.p 
             className="text-xl md:text-2xl text-neutral-600 mb-10 max-w-3xl mx-auto"
@@ -33,7 +33,7 @@ const Index = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Access real, successful applications from students who got into top colleges. See exactly what works in the admissions process.
+            Access real, successful applications from students who got into top UK universities. See exactly what works in the admissions process.
           </motion.p>
           <motion.div 
             className="flex flex-col sm:flex-row justify-center gap-4"
@@ -53,13 +53,13 @@ const Index = () => {
                 />
                 <div className="absolute bottom-0 right-0 w-4 h-4 bg-white rounded-full p-0.5">
                   <img 
-                    src="/universities/stanford.png" 
-                    alt="Stanford" 
+                    src="/universities/cambridge.png" 
+                    alt="Cambridge" 
                     className="w-full h-full object-contain" 
                   />
                 </div>
               </div>
-              <span>View Hamza's Stanford Profile for Free</span>
+              <span>View Hamza's Cambridge Profile for Free</span>
             </Link>
             <Link
               to="/browse"
@@ -111,9 +111,9 @@ const Index = () => {
       {/* How It Works */}
       <section className="apple-section">
         <div className="container-padding">
-          <h2 className="apple-heading">Demystify College Admissions</h2>
+          <h2 className="apple-heading">Demystify UK University Admissions</h2>
           <p className="apple-subheading">
-            College admissions doesn't have to be a black box. Get insights from students who've been there.
+            University admissions doesn't have to be a black box. Get insights from students who've been there.
           </p>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mt-12">
@@ -133,7 +133,7 @@ const Index = () => {
               </div>
               <h3 className="text-xl font-bold mb-3">Browse Real Applications</h3>
               <p className="text-neutral-600">
-                Explore a diverse collection of authentic applications from students admitted to top universities.
+                Explore a diverse collection of authentic personal statements from students admitted to top UK universities.
               </p>
             </motion.div>
             
@@ -152,7 +152,7 @@ const Index = () => {
               </div>
               <h3 className="text-xl font-bold mb-3">Learn What Works</h3>
               <p className="text-neutral-600">
-                Understand the strategies and approaches that helped students secure their admissions.
+                Understand the strategies and approaches that helped students secure their admissions to Oxford, Cambridge and other top universities.
               </p>
             </motion.div>
             
@@ -169,9 +169,9 @@ const Index = () => {
                   <path d="M2.90625 20.2491C3.82775 18.6531 5.1179 17.3272 6.6376 16.3823C8.1573 15.4374 9.8576 14.9039 11.5999 14.8369C13.3423 14.7699 15.0733 15.1728 16.6367 16.0012C18.2001 16.8295 19.5388 18.0512 20.4938 19.5491" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-3">Craft Your Story</h3>
+              <h3 className="text-xl font-bold mb-3">Craft Your Statement</h3>
               <p className="text-neutral-600">
-                Apply insights from successful applicants to enhance your own unique application.
+                Apply insights from successful applicants to enhance your own personal statement and interview preparation.
               </p>
             </motion.div>
           </div>
@@ -210,7 +210,7 @@ const Index = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Join thousands of students who have gained acceptance to their dream schools with Glassbox.
+            Join thousands of students who have gained acceptance to their dream UK universities with Glassbox.
           </motion.p>
           <motion.div 
             className="flex flex-col sm:flex-row justify-center gap-4"

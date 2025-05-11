@@ -3,20 +3,20 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const universities = [
-  { name: 'Harvard', logo: '/universities/harvard.png' },
-  { name: 'Yale', logo: '/universities/yale.png' },
-  { name: 'Princeton', logo: '/universities/princeton.png' },
-  { name: 'Columbia', logo: '/universities/columbia.png' },
-  { name: 'Brown', logo: '/universities/brown.png' },
-  { name: 'Dartmouth', logo: '/universities/dartmouth.png' },
-  { name: 'Cornell', logo: '/universities/cornell.png' },
-  { name: 'UPenn', logo: '/universities/upenn.png' },
-  { name: 'Stanford', logo: '/universities/stanford.png' },
-  { name: 'MIT', logo: '/universities/mit.png' },
-  { name: 'Caltech', logo: '/universities/caltech.png' },
-  { name: 'Duke', logo: '/universities/duke.png' },
-  { name: 'Johns Hopkins', logo: '/universities/johnshopkins.png' },
-  { name: 'NYU', logo: '/universities/nyu.png' },
+  { name: 'Oxford', logo: '/universities/oxford.png' },
+  { name: 'Cambridge', logo: '/universities/cambridge.png' },
+  { name: 'Imperial College London', logo: '/universities/imperial.png' },
+  { name: 'UCL', logo: '/universities/ucl.png' },
+  { name: 'LSE', logo: '/universities/lse.png' },
+  { name: 'Edinburgh', logo: '/universities/edinburgh.png' },
+  { name: 'King\'s College London', logo: '/universities/kings.png' },
+  { name: 'Manchester', logo: '/universities/manchester.png' },
+  { name: 'Warwick', logo: '/universities/warwick.png' },
+  { name: 'Bristol', logo: '/universities/bristol.png' },
+  { name: 'Durham', logo: '/universities/durham.png' },
+  { name: 'St Andrews', logo: '/universities/st-andrews.png' },
+  { name: 'Glasgow', logo: '/universities/glasgow.png' },
+  { name: 'Queen Mary', logo: '/universities/qmul.png' },
 ];
 
 // Create duplicate array for continuous scroll

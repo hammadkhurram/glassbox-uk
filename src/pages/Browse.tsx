@@ -6,20 +6,20 @@ import ProfileCard from '@/components/ProfileCard';
 import { motion } from 'framer-motion';
 import { Search, ChevronDown } from 'lucide-react';
 
-// Sample university data
+// UK university data
 const universities = [
-  { id: 'harvard', name: 'Harvard University', logo: '/universities/harvard.png' },
-  { id: 'stanford', name: 'Stanford University', logo: '/universities/stanford.png' },
-  { id: 'yale', name: 'Yale University', logo: '/universities/yale.png' },
-  { id: 'princeton', name: 'Princeton University', logo: '/universities/princeton.png' },
-  { id: 'mit', name: 'MIT', logo: '/universities/mit.png' },
-  { id: 'columbia', name: 'Columbia University', logo: '/universities/columbia.png' },
-  { id: 'brown', name: 'Brown University', logo: '/universities/brown.png' },
-  { id: 'upenn', name: 'UPenn', logo: '/universities/upenn.png' },
-  { id: 'cornell', name: 'Cornell University', logo: '/universities/cornell.png' },
-  { id: 'dartmouth', name: 'Dartmouth College', logo: '/universities/dartmouth.png' },
-  { id: 'duke', name: 'Duke University', logo: '/universities/duke.png' },
-  { id: 'nyu', name: 'New York University', logo: '/universities/nyu.png' },
+  { id: 'oxford', name: 'University of Oxford', logo: '/universities/oxford.png' },
+  { id: 'cambridge', name: 'University of Cambridge', logo: '/universities/cambridge.png' },
+  { id: 'imperial', name: 'Imperial College London', logo: '/universities/imperial.png' },
+  { id: 'ucl', name: 'UCL', logo: '/universities/ucl.png' },
+  { id: 'lse', name: 'LSE', logo: '/universities/lse.png' },
+  { id: 'edinburgh', name: 'University of Edinburgh', logo: '/universities/edinburgh.png' },
+  { id: 'kings', name: 'King\'s College London', logo: '/universities/kings.png' },
+  { id: 'manchester', name: 'University of Manchester', logo: '/universities/manchester.png' },
+  { id: 'warwick', name: 'University of Warwick', logo: '/universities/warwick.png' },
+  { id: 'bristol', name: 'University of Bristol', logo: '/universities/bristol.png' },
+  { id: 'durham', name: 'Durham University', logo: '/universities/durham.png' },
+  { id: 'st-andrews', name: 'University of St Andrews', logo: '/universities/st-andrews.png' },
 ];
 
 // Generate 30 sample profiles
@@ -43,19 +43,19 @@ const generateProfiles = () => {
     const name = `${firstName} ${lastInitial}`;
     const image = images[Math.floor(Math.random() * images.length)];
     
-    // Randomly select 1-4 universities
-    const numUniversities = Math.floor(Math.random() * 4) + 1;
+    // Randomly select 1-3 universities
+    const numUniversities = Math.floor(Math.random() * 3) + 1;
     const shuffled = [...universities].sort(() => 0.5 - Math.random());
     const profileUniversities = shuffled.slice(0, numUniversities);
     
-    // Features
-    const hasCommonApp = true;
-    const hasPersonalEssays = Math.random() > 0.2;
-    const hasActivityDescriptions = Math.random() > 0.3;
-    const hasSupplementalEssays = Math.random() > 0.2;
+    // Features - for UK applications we focus on personal statement and interviews
+    const hasPersonalStatement = true;
+    const hasInterviewQuestions = profileUniversities.some(uni => 
+      uni.id === 'oxford' || uni.id === 'cambridge'
+    );
     
-    // Price based on number of universities
-    const price = numUniversities > 3 ? 30 : 20;
+    // Price based on number of items
+    const price = hasInterviewQuestions ? 30 : 20;
     
     profiles.push({
       id: `profile-${i}`,
@@ -63,10 +63,8 @@ const generateProfiles = () => {
       image,
       universities: profileUniversities.map(uni => ({ name: uni.name, logo: uni.logo })),
       universityIds: profileUniversities.map(uni => uni.id),
-      hasCommonApp,
-      hasPersonalEssays,
-      hasActivityDescriptions,
-      hasSupplementalEssays,
+      hasPersonalStatement,
+      hasInterviewQuestions,
       price
     });
   }
@@ -122,8 +120,8 @@ const Browse: React.FC = () => {
           <div className="text-center mb-12">
             <h1 className="heading-lg mb-4">Browse Application Profiles</h1>
             <p className="text-lg text-neutral-600 max-w-3xl mx-auto">
-              Explore successful applications from students who were admitted to top universities.
-              Filter by school to find relevant profiles for your goals.
+              Explore successful applications from students who were admitted to top UK universities.
+              Filter by university to find relevant profiles for your goals.
             </p>
           </div>
           

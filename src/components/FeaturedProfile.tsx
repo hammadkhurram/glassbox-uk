@@ -23,7 +23,7 @@ const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ onAccess }) => {
       setIsSubmitting(false);
       toast({
         title: "Success!",
-        description: "Hamza's Stanford profile has been sent to your email.",
+        description: "Hamza's Cambridge profile has been sent to your email.",
       });
       setEmail('');
       setCountry('');
@@ -33,9 +33,9 @@ const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ onAccess }) => {
 
   return (
     <div className="container-padding py-8">
-      <h2 className="text-center heading-lg mb-2">How Hamza Got Into Stanford</h2>
+      <h2 className="text-center heading-lg mb-2">How Hamza Got Into Cambridge</h2>
       <p className="text-center text-neutral-500 mb-6 max-w-3xl mx-auto">
-        Get access to this featured profile for free and learn the strategies that helped Hamza secure his spot at Stanford University.
+        Get access to this featured profile for free and learn the strategies that helped Hamza secure his spot at the University of Cambridge.
       </p>
       
       <motion.div 
@@ -55,8 +55,8 @@ const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ onAccess }) => {
               />
               <div className="absolute bottom-0 right-0 w-6 h-6 bg-white rounded-full p-0.5">
                 <img 
-                  src="/universities/stanford.png" 
-                  alt="Stanford University" 
+                  src="/universities/cambridge.png" 
+                  alt="University of Cambridge" 
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -64,7 +64,7 @@ const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ onAccess }) => {
             <div>
               <h3 className="text-xl font-bold">Hamza A.</h3>
               <div className="flex items-center mt-1 space-x-2">
-                <span className="text-sm text-neutral-500">Stanford University</span>
+                <span className="text-sm text-neutral-500">University of Cambridge</span>
               </div>
             </div>
           </div>
@@ -73,22 +73,22 @@ const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ onAccess }) => {
             <div className="flex items-start">
               <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5" />
               <div>
-                <h4 className="font-medium">Common Application</h4>
-                <p className="text-sm text-neutral-600">Full application with personal statement</p>
+                <h4 className="font-medium">Personal Statement</h4>
+                <p className="text-sm text-neutral-600">UCAS personal statement with academic focus</p>
               </div>
             </div>
             <div className="flex items-start">
               <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5" />
               <div>
-                <h4 className="font-medium">Supplemental Essays</h4>
-                <p className="text-sm text-neutral-600">Stanford-specific essay responses</p>
+                <h4 className="font-medium">Interview Questions & Answers</h4>
+                <p className="text-sm text-neutral-600">Cambridge-specific interview responses</p>
               </div>
             </div>
             <div className="flex items-start">
               <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5" />
               <div>
-                <h4 className="font-medium">Activity Descriptions</h4>
-                <p className="text-sm text-neutral-600">Detailed extracurricular breakdown</p>
+                <h4 className="font-medium">Subject-Specific Essay</h4>
+                <p className="text-sm text-neutral-600">Pre-interview written work sample</p>
               </div>
             </div>
             <div className="flex items-start">
@@ -102,7 +102,7 @@ const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ onAccess }) => {
           
           <div className="bg-white p-4 rounded-xl">
             <p className="italic text-neutral-600 text-sm">
-              "I focused on authenticity in my essays and showing how my unique background influenced my academic interests. This profile shows exactly how I structured my application to stand out."
+              "I focused on demonstrating my academic passion and subject knowledge in my personal statement. This profile shows exactly how I structured my application to stand out at Cambridge."
             </p>
             <p className="text-right font-medium text-sm mt-2">— Hamza</p>
           </div>
@@ -112,7 +112,7 @@ const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ onAccess }) => {
         <div className="w-full lg:w-1/2 bg-white p-8 lg:p-12 flex flex-col justify-center">
           <h3 className="text-2xl font-bold mb-2">Get This Profile For Free</h3>
           <p className="text-neutral-600 mb-6">
-            Enter your details below to receive Hamza's complete Stanford application profile in your inbox.
+            Enter your details below to receive Hamza's complete Cambridge application profile in your inbox.
           </p>
           
           <form onSubmit={handleSubmit}>
@@ -142,7 +142,7 @@ const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ onAccess }) => {
                 onChange={(e) => setCountry(e.target.value)}
                 required
                 className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all"
-                placeholder="United States"
+                placeholder="United Kingdom"
               />
             </div>
             

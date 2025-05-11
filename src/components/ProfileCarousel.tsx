@@ -92,21 +92,6 @@ const sampleProfiles = [
     hasActivityDescriptions: true,
     hasSupplementalEssays: true,
     price: 30
-  },
-  {
-    id: '7',
-    name: 'James Park',
-    image: 'https://images.unsplash.com/photo-1507537297725-24a1c029d3ca',
-    universities: [
-      {name: 'Harvard', logo: '/universities/harvard.png'},
-      {name: 'Yale', logo: '/universities/yale.png'},
-      {name: 'Princeton', logo: '/universities/princeton.png'}
-    ],
-    hasCommonApp: true,
-    hasPersonalEssays: true,
-    hasActivityDescriptions: true,
-    hasSupplementalEssays: true,
-    price: 30
   }
 ];
 
@@ -123,8 +108,10 @@ const ProfileCarousel: React.FC = () => {
         setShowCount(1); // Mobile: Show 1
       } else if (window.innerWidth < 1024) {
         setShowCount(2); // Tablet: Show 2
+      } else if (window.innerWidth < 1280) {
+        setShowCount(3); // Small Desktop: Show 3
       } else {
-        setShowCount(3); // Desktop: Show 3
+        setShowCount(3); // Large Desktop: Show 3
       }
     };
 
@@ -176,8 +163,8 @@ const ProfileCarousel: React.FC = () => {
           {profiles.map((profile) => (
             <div 
               key={profile.id} 
-              className={`w-full sm:${showCount === 1 ? 'w-full' : showCount === 2 ? 'w-1/2' : 'w-1/3'} flex-shrink-0 px-2`}
-              style={{ height: '100%' }}
+              className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 flex-shrink-0 px-2"
+              style={{ width: `${100 / showCount}%` }}
             >
               <ProfileCard {...profile} />
             </div>

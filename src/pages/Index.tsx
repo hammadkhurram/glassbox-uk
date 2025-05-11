@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import ProfileCarousel from "@/components/ProfileCarousel";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
-import FeaturedProfile from "@/components/FeaturedProfile";
 import UniversityLogoScroll from "@/components/UniversityLogoScroll";
 import PricingPackages from "@/components/PricingPackages";
 import Footer from "@/components/Footer";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import StudentsMarquee from "@/components/StudentsMarquee";
 
 const Index = () => {
   return (
@@ -53,6 +53,12 @@ const Index = () => {
             >
               Upload Profile
             </Link>
+            <Link
+              to="/profile/1"
+              className="px-8 py-4 bg-neutral-800 text-white rounded-full text-lg font-medium hover:bg-black transition-colors"
+            >
+              See Hamza's Stanford Profile
+            </Link>
           </motion.div>
         </div>
       </header>
@@ -66,14 +72,14 @@ const Index = () => {
           <div className="flex items-center justify-center">
             <CheckCircle className="text-green-500 w-6 h-6 mr-3" />
             <p className="text-lg font-medium">
-              All profiles are verified for authenticity and accuracy
+              All acceptances are verified for authenticity and accuracy
             </p>
           </div>
         </div>
       </div>
-
-      {/* Featured Profile - Stanford */}
-      <FeaturedProfile />
+      
+      {/* Student Images Marquee */}
+      <StudentsMarquee />
       
       {/* Featured Profiles Carousel */}
       <section className="py-16 bg-white">

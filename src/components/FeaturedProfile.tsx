@@ -4,7 +4,11 @@ import { motion } from 'framer-motion';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-const FeaturedProfile: React.FC = () => {
+interface FeaturedProfileProps {
+  onAccess: () => void;
+}
+
+const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ onAccess }) => {
   const [email, setEmail] = useState('');
   const [country, setCountry] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,6 +27,7 @@ const FeaturedProfile: React.FC = () => {
       });
       setEmail('');
       setCountry('');
+      onAccess();
     }, 1000);
   };
 
@@ -42,21 +47,24 @@ const FeaturedProfile: React.FC = () => {
         {/* Left side - Profile preview */}
         <div className="w-full lg:w-1/2 bg-neutral-100 p-8 lg:p-12">
           <div className="flex items-center mb-6">
-            <div className="w-20 h-20 rounded-full overflow-hidden mr-4">
+            <div className="w-20 h-20 rounded-full overflow-hidden mr-4 relative">
               <img 
                 src="https://images.unsplash.com/photo-1500673922987-e212871fec22" 
                 alt="Hamza" 
                 className="w-full h-full object-cover"
               />
+              <div className="absolute bottom-0 right-0 w-6 h-6 bg-white rounded-full p-0.5">
+                <img 
+                  src="/universities/stanford.png" 
+                  alt="Stanford University" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </div>
             <div>
               <h3 className="text-xl font-bold">Hamza A.</h3>
               <div className="flex items-center mt-1 space-x-2">
-                <img 
-                  src="/universities/stanford.png" 
-                  alt="Stanford University" 
-                  className="h-6 w-auto"
-                />
+                <span className="text-sm text-neutral-500">Stanford University</span>
               </div>
             </div>
           </div>

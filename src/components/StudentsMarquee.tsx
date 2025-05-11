@@ -42,7 +42,7 @@ const StudentsMarquee = () => {
   return (
     <div className="py-12 bg-white overflow-hidden">
       <div className="container-padding mb-6">
-        <h2 className="text-2xl font-bold text-center">Meet Students Who Got In</h2>
+        <h2 className="text-2xl font-bold text-center">Get Inspired From Students Who Got In</h2>
       </div>
       <div className="relative">
         <motion.div 

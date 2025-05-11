@@ -42,6 +42,26 @@ const Index = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <Link
+              to="/profile/1"
+              className="px-8 py-4 bg-neutral-800 hover:bg-black rounded-full text-lg font-medium text-white transition-colors flex items-center justify-center gap-3"
+            >
+              <div className="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1500673922987-e212871fec22" 
+                  alt="Hamza" 
+                  className="w-full h-full object-cover" 
+                />
+                <div className="absolute bottom-0 right-0 w-4 h-4 bg-white rounded-full p-0.5">
+                  <img 
+                    src="/universities/stanford.png" 
+                    alt="Stanford" 
+                    className="w-full h-full object-contain" 
+                  />
+                </div>
+              </div>
+              <span>View Hamza's Stanford Profile for Free</span>
+            </Link>
+            <Link
               to="/browse"
               className="px-8 py-4 bg-accent text-white rounded-full text-lg font-medium hover:bg-accent/90 transition-colors"
             >
@@ -52,12 +72,6 @@ const Index = () => {
               className="px-8 py-4 bg-white text-black rounded-full text-lg font-medium border border-neutral-200 hover:bg-neutral-100 transition-colors"
             >
               Upload Profile
-            </Link>
-            <Link
-              to="/profile/1"
-              className="px-8 py-4 bg-neutral-800 text-white rounded-full text-lg font-medium hover:bg-black transition-colors"
-            >
-              See Hamza's Stanford Profile
             </Link>
           </motion.div>
         </div>

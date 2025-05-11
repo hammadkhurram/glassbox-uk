@@ -60,7 +60,7 @@ const allTestimonials = [...testimonials, ...testimonials];
 
 const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => {
   return (
-    <div className="testimonial-card bg-white/10 backdrop-blur-sm rounded-xl p-6 mx-3 my-4 shadow-lg flex flex-col h-[280px]">
+    <div className="testimonial-card bg-white/10 backdrop-blur-sm rounded-xl p-6 shadow-lg flex flex-col h-[280px]">
       <p className="italic text-white/90 mb-4 flex-grow">"{testimonial.quote}"</p>
       <div className="flex items-center mt-auto">
         <div className="w-12 h-12 rounded-full overflow-hidden mr-3">
@@ -92,9 +92,9 @@ const TestimonialCarousel: React.FC = () => {
       </div>
       
       {/* First row - slower speed */}
-      <div className="testimonial-row mb-6">
+      <div className="testimonial-row mb-10">
         <motion.div 
-          className="flex"
+          className="flex gap-6"
           animate={{
             x: ["0%", "-50%"]
           }}
@@ -107,11 +107,11 @@ const TestimonialCarousel: React.FC = () => {
             }
           }}
           style={{
-            width: `${testimonials.length * 330}px`
+            width: `${testimonials.length * 330 + testimonials.length * 24}px`
           }}
         >
           {allTestimonials.map((testimonial, index) => (
-            <div key={`${testimonial.id}-${index}`} style={{ width: '320px' }}>
+            <div key={`${testimonial.id}-${index}`} style={{ width: '320px', flexShrink: 0 }}>
               <TestimonialCard testimonial={testimonial} />
             </div>
           ))}
@@ -121,7 +121,7 @@ const TestimonialCarousel: React.FC = () => {
       {/* Second row - faster speed, reverse direction */}
       <div className="testimonial-row">
         <motion.div 
-          className="flex"
+          className="flex gap-6"
           animate={{
             x: ["-50%", "0%"]
           }}
@@ -134,11 +134,11 @@ const TestimonialCarousel: React.FC = () => {
             }
           }}
           style={{
-            width: `${testimonials.length * 330}px`
+            width: `${testimonials.length * 330 + testimonials.length * 24}px`
           }}
         >
           {allTestimonials.reverse().map((testimonial, index) => (
-            <div key={`${testimonial.id}-${index}-reverse`} style={{ width: '320px' }}>
+            <div key={`${testimonial.id}-${index}-reverse`} style={{ width: '320px', flexShrink: 0 }}>
               <TestimonialCard testimonial={testimonial} />
             </div>
           ))}

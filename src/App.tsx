@@ -9,7 +9,7 @@ import Browse from "./pages/Browse";
 import HowItWorks from "./pages/HowItWorks";
 import SuccessStories from "./pages/SuccessStories";
 import ProfileDetail from "./pages/ProfileDetail";
-import Upload from "./pages/Upload";
+import UploadPage from "./pages/Upload";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +25,7 @@ const App = () => (
           <Route path="/howitworks" element={<HowItWorks />} />
           <Route path="/success-stories" element={<SuccessStories />} />
           <Route path="/profile/:id" element={<ProfileDetail />} />
-          <Route path="/upload" element={<Upload />} />
+          <Route path="/upload" element={<UploadPage />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

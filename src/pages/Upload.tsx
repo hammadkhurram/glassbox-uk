@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { CheckCircle, Upload } from "lucide-react";
+import { CheckCircle, Upload as UploadIcon } from "lucide-react";
 
-const Upload = () => {
+const UploadPage = () => {
   const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -210,7 +210,7 @@ const Upload = () => {
                     Upload Materials (PDF)
                   </label>
                   <div className="border-2 border-dashed border-neutral-300 rounded-lg p-8 text-center hover:border-accent transition-colors">
-                    <Upload className="mx-auto h-8 w-8 text-neutral-400" />
+                    <UploadIcon className="mx-auto h-8 w-8 text-neutral-400" />
                     <p className="mt-2 text-sm text-neutral-600">Drag files here or click to browse</p>
                     <input 
                       type="file" 
@@ -259,4 +259,4 @@ const Upload = () => {
   );
 };
 
-export default Upload;
+export default UploadPage;

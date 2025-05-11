@@ -4,11 +4,7 @@ import { motion } from 'framer-motion';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-interface FeaturedProfileProps {
-  compact?: boolean;
-}
-
-const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ compact = false }) => {
+const FeaturedProfile: React.FC = () => {
   const [email, setEmail] = useState('');
   const [country, setCountry] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,65 +25,6 @@ const FeaturedProfile: React.FC<FeaturedProfileProps> = ({ compact = false }) =>
       setCountry('');
     }, 1000);
   };
-
-  if (compact) {
-    return (
-      <motion.div 
-        className="bg-white rounded-xl overflow-hidden shadow-md border border-neutral-200"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="p-5">
-          <h3 className="font-bold text-lg mb-2">How Hamza Got Into Stanford</h3>
-          
-          <div className="flex items-center mb-3">
-            <div className="w-12 h-12 rounded-full overflow-hidden mr-3">
-              <img 
-                src="https://images.unsplash.com/photo-1500673922987-e212871fec22" 
-                alt="Hamza" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <p className="font-semibold">Hamza A.</p>
-              <div className="flex">
-                <img src="/universities/stanford.png" alt="Stanford University" className="h-4 w-auto" />
-              </div>
-            </div>
-          </div>
-          
-          <form onSubmit={handleSubmit} className="space-y-3">
-            <div>
-              <input 
-                type="email" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email" 
-                required
-                className="w-full px-3 py-2 border rounded-lg text-sm"
-              />
-            </div>
-            <button 
-              type="submit" 
-              className="w-full flex justify-center items-center py-2 bg-accent text-white rounded-lg text-sm font-medium hover:bg-accent/90 transition-colors"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? 'Sending...' : 'Get Free Access'}
-              {!isSubmitting && <ArrowRight className="ml-1 h-3 w-3" />}
-            </button>
-          </form>
-          
-          <div className="flex gap-1 mt-3 justify-center">
-            <CheckCircle className="w-3 h-3 text-green-500 mt-1" />
-            <p className="text-[10px] text-neutral-500">
-              We respect your privacy and will never share your information.
-            </p>
-          </div>
-        </div>
-      </motion.div>
-    );
-  }
 
   return (
     <div className="container-padding py-8">

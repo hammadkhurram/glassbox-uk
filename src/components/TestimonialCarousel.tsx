@@ -1,6 +1,7 @@
 
-import React, { useEffect, useRef } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Testimonial {
   id: number;
@@ -38,97 +39,152 @@ const testimonials: Testimonial[] = [
     university: "Harvard University",
     image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901",
     quote: "Glassbox is the reason I got into Harvard. I could finally see what worked for other students and adapt those strategies for my own application."
-  },
-  {
-    id: 5,
-    name: "Emma P.",
-    university: "Princeton University",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956",
-    quote: "The personal essays I found on Glassbox showed me how to tell my story in a compelling way. Princeton was my dream school and Glassbox made it possible."
-  },
-  {
-    id: 6,
-    name: "Jason K.",
-    university: "Columbia University",
-    image: "https://images.unsplash.com/photo-1531891437562-4301cf35b7e4",
-    quote: "I was struggling with my supplemental essays until I found examples on Glassbox. Seeing what worked for other Columbia admits was a game-changer."
   }
 ];
 
 const TestimonialCarousel: React.FC = () => {
-  const controls = useAnimation();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const CARD_WIDTH = 320; // Width of a single testimonial card
-  const ANIMATION_DURATION = 30; // Seconds for a complete cycle
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState<number>(1);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
+  const goToNext = () => {
+    setDirection(1);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+  };
+
+  const goToPrev = () => {
+    setDirection(-1);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
+  };
+
+  // Auto-advance carousel
   useEffect(() => {
-    // Clone testimonials for infinite loop effect
-    const fullScrollWidth = testimonials.length * CARD_WIDTH;
+    if (!isAutoPlaying) return;
     
-    const animate = async () => {
-      await controls.start({
-        x: -fullScrollWidth,
-        transition: {
-          duration: ANIMATION_DURATION,
-          ease: "linear",
-          repeat: Infinity,
-          repeatType: "loop",
-        },
-      });
-    };
+    const timer = setInterval(() => {
+      goToNext();
+    }, 5000);
     
-    animate();
-    
-    return () => {
-      controls.stop();
-    };
-  }, [controls]);
+    return () => clearInterval(timer);
+  }, [currentIndex, isAutoPlaying]);
 
-  const renderTestimonialCard = (testimonial: Testimonial) => (
-    <div 
-      key={testimonial.id} 
-      className="flex-none w-80 mx-3 bg-white rounded-xl shadow-md overflow-hidden"
-    >
-      <div className="p-6">
-        <div className="flex items-center mb-4">
-          <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
-            <img 
-              src={testimonial.image} 
-              alt={testimonial.name}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div>
-            <p className="font-bold">{testimonial.name}</p>
-            <p className="text-sm text-neutral-500">{testimonial.university}</p>
-          </div>
-        </div>
-        <p className="italic text-neutral-700">"{testimonial.quote}"</p>
-      </div>
-    </div>
-  );
+  // Pause auto-play on hover
+  const handleMouseEnter = () => setIsAutoPlaying(false);
+  const handleMouseLeave = () => setIsAutoPlaying(true);
+
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+    })
+  };
 
   return (
-    <div className="py-16 bg-neutral-50 overflow-hidden">
-      <div className="container-padding">
-        <h2 className="text-3xl font-bold text-center mb-2">Hear from Our Students</h2>
-        <p className="text-center text-neutral-600 mb-10 max-w-2xl mx-auto">
-          Students who used Glassbox to gain admission to their dream schools
-        </p>
+    <div 
+      className="relative overflow-hidden apple-section"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="apple-heading">Hear from Our Students</div>
+      <p className="apple-subheading">
+        Students who used Glassbox to gain admission to their dream schools
+      </p>
+
+      <div className="relative max-w-4xl mx-auto h-64 md:h-80">
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.div
+            className="absolute w-full h-full flex items-center"
+            key={currentIndex}
+            custom={direction}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 }
+            }}
+          >
+            <div className="flex items-center p-6 bg-white rounded-2xl shadow-lg">
+              <div className="hidden md:block w-1/4 pr-6">
+                <div className="w-24 h-24 mx-auto rounded-full overflow-hidden">
+                  <img 
+                    src={testimonials[currentIndex].image} 
+                    alt={testimonials[currentIndex].name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="w-full md:w-3/4">
+                <div className="mb-6">
+                  <p className="text-lg md:text-xl italic mb-4">"
+                    {testimonials[currentIndex].quote}
+                  "</p>
+                  <div className="flex items-center md:hidden mb-4">
+                    <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
+                      <img 
+                        src={testimonials[currentIndex].image} 
+                        alt={testimonials[currentIndex].name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <p className="font-bold">{testimonials[currentIndex].name}</p>
+                      <p className="text-sm text-neutral-500">{testimonials[currentIndex].university}</p>
+                    </div>
+                  </div>
+                  <div className="hidden md:block">
+                    <p className="font-bold">{testimonials[currentIndex].name}</p>
+                    <p className="text-neutral-500">{testimonials[currentIndex].university}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        <button 
+          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-3 shadow-lg z-10"
+          onClick={goToPrev}
+          aria-label="Previous testimonial"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
         
-        <div className="relative overflow-hidden" ref={containerRef}>
-          <div className="flex space-x-4">
-            <motion.div 
-              className="flex"
-              animate={controls}
-            >
-              {/* First set of testimonials */}
-              {testimonials.map(renderTestimonialCard)}
-              {/* Duplicate set for seamless looping */}
-              {testimonials.map(testimonial => renderTestimonialCard({...testimonial, id: testimonial.id + 100}))}
-            </motion.div>
-          </div>
-        </div>
+        <button 
+          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-3 shadow-lg z-10"
+          onClick={goToNext}
+          aria-label="Next testimonial"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+      </div>
+
+      {/* Dots indicator */}
+      <div className="flex justify-center mt-6 space-x-2">
+        {testimonials.map((_, index) => (
+          <button
+            key={index}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              index === currentIndex ? 'bg-neutral-800 w-4' : 'bg-neutral-300'
+            }`}
+            onClick={() => {
+              setDirection(index > currentIndex ? 1 : -1);
+              setCurrentIndex(index);
+            }}
+            aria-label={`Go to testimonial ${index + 1}`}
+          />
+        ))}
       </div>
     </div>
   );
